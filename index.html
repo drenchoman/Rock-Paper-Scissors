@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Rock, Paper, Scissors</title>
+</head>
+
+<body>
+
+</body>
+
+<script type="text/javascript">
+  let computerSelection = computerPlay();
+
+  let win = 0;
+  let lose = 0;
+  let draw = 0;
+
+  function computerPlay() {
+    let choice = Math.floor(Math.random() * 3)
+    switch(choice) {
+      case 0:
+      hand = "rock";
+      break;
+
+      case 1:
+      hand = "paper"
+      break;
+
+      case 2:
+      hand = "scissors"
+      break;
+
+      default:
+      console.log("Something went terribly wrong")
+    }
+    return hand;
+  }
+
+
+  // function playerSelection(){
+  //   pHand = prompt("Rock, paper or scissors?").toLowerCase();
+  //   while (pHand != "rock" || pHand != "paper" || pHand != "scissors") {
+  //     pHand = prompt("Rock, paper or scissors?").toLowerCase();
+  //   }
+  //   return pHand;
+  // };
+
+
+
+  function playRound(playerSelection, computerSelection){
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection === "rock" && computerSelection === "paper"){
+      result = ("You lose! Paper beats rock");
+      lose++;
+      return result;
+    } else if (playerSelection === "scissors" && computerSelection === "rock"){
+      result = ("You lose! Rock beats scissors");
+      lose++;
+      return result;
+    } else if (playerSelection === "paper" && computerSelection === "scissors"){
+      result = ("You lose! Scissors beats Paper");
+      lose++;
+      return result;
+    } else if(playerSelection === "rock" && computerSelection === "scissors"){
+      result = ("You win! Rock beats Scissors!");
+      win++;
+      return result;
+    } else if (playerSelection === "scissors" && computerSelection === "paper"){
+      result = ("You win! Scissors beats Paper!");
+      win++
+      return result;
+    } else if (playerSelection === "paper" && computerSelection === "rock"){
+      result = ("You win! Paper beats Rock!");
+      win++
+      return result;
+    } else if (playerSelection === computerSelection) {
+      result = ("It's a draw!");
+      draw++
+      return result;
+    } else {
+      console.log(playerSelection + computerSelection);
+    }
+
+    }
+
+function chooseNumRounds(){
+  num = prompt("Let's play Rock, Paper, Scissors!\nHow many rounds would you like to play?")
+  while (isNaN(num) === true){
+    num = prompt("Let's play Rock, Paper, Scissors!\nHow many rounds would you like to play?")
+  }
+    return num;
+}
+
+function determineWinner(){
+  if (win > lose){
+    console.log("Congratulations! You beat the computer!")
+  } else if ( win < lose ){
+    console.log("Yikes! You lost to the computer")
+  } else {
+    console.log("Draw much?")
+  }
+  console.log("You won " + win + " times, lost " + lose + " times and drew " + draw + " times!" );
+}
+
+function playAgain(){
+  answer = prompt("Would you like to play again?\nEnter Yes or No").toLowerCase();
+  if (answer === "no"){
+    console.log("No worries! Thanks for playing")
+  } else if (answer === "yes"){
+    chooseNumRounds();
+  } else {
+    alert("Farewell!")
+  }
+}
+
+function game(){
+  chooseNumRounds();
+
+  for (let i = 0; i < num; i++){
+    let playerSelection = prompt("Rock, paper or scissors?");
+    let computerSelection = computerPlay();
+
+    console.log(playRound(playerSelection, computerSelection), "You have " + win + " wins " + lose + " losses " + draw + " draws." );
+
+    }
+    determineWinner();
+    playAgain();
+  }
+
+
+
+game();
+
+
+</script>
+
+</html>
